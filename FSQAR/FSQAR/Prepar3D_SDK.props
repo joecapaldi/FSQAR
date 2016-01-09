@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <Prepar3D_SDK>C:\Sim\Lockheed Martin\Prepar3D v3 SDK 3.1.2.15831\Utilities\SimConnect SDK</Prepar3D_SDK>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(Prepar3d_sdk)\Inc</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(Prepar3d_sdk)\Lib</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="Prepar3D_SDK">
+      <Value>$(Prepar3D_SDK)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

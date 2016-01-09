@@ -1,0 +1,28 @@
+[OPTIONS]
+Auto Index=Yes
+Compatibility=1.1 or later
+Compiled file=FSQAR.chm
+Contents file=FSQAR_TOC.hhc
+Default topic=What is FSQAR.htm
+Display compile progress=No
+Index file=FSQAR_Index.hhk
+Language=0x409 English (United States)
+Title=FSQAR
+
+
+[FILES]
+What is FSQAR.htm
+What is FSQAR.htm
+Top Most Position.htm
+Simulator Variables.htm
+Short description.htm
+Output Files.htm
+Other.htm
+Options.htm
+How it works.htm
+For whom this was made.htm
+Feedback.htm
+Charts.htm
+
+[INFOTYPES]
+
