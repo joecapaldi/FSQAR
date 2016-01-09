@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AboutGPL.h" />
+    <ClInclude Include="ADisplay.h" />
+    <ClInclude Include="afxdefs.h" />
+    <ClInclude Include="afxres.h" />
+    <ClInclude Include="FSQAR.h" />
+    <ClInclude Include="HelpIDs.h" />
+    <ClInclude Include="IntList.h" />
+    <ClInclude Include="Registry.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="SCExport.h" />
+    <ClInclude Include="SimClient.h" />
+    <ClInclude Include="SimConnect_p3d_v3.h" />
+    <ClInclude Include="SimVarIDS.h" />
+    <ClInclude Include="simvarres.h" />
+    <ClInclude Include="StdAfx.h" />
+    <ClInclude Include="webcont.h" />
+    <ClInclude Include="ZipImpl.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AboutGPL.cpp" />
+    <ClCompile Include="BitmapFile.cpp" />
+    <ClCompile Include="ControlPad.cpp" />
+    <ClCompile Include="FavorDlg.cpp" />
+    <ClCompile Include="FileOutput.cpp" />
+    <ClCompile Include="FrameWnd.cpp" />
+    <ClCompile Include="GDisplay.cpp" />
+    <ClCompile Include="GlobFunc.cpp" />
+    <ClCompile Include="MyDebug.cpp" />
+    <ClCompile Include="MyValidObject.cpp" />
+    <ClCompile Include="NDisplay.cpp" />
+    <ClCompile Include="OutFolderDialog.cpp" />
+    <ClCompile Include="Output.cpp" />
+    <ClCompile Include="QARApp.cpp" />
+    <ClCompile Include="Registry.cpp" />
+    <ClCompile Include="RegUtils.cpp" />
+    <ClCompile Include="SCExport.cpp" />
+    <ClCompile Include="SDisplay.cpp" />
+    <ClCompile Include="SimClient.cpp" />
+    <ClCompile Include="SimClientOptions.cpp" />
+    <ClCompile Include="SimData.cpp" />
+    <ClCompile Include="SimDispatch.cpp" />
+    <ClCompile Include="SimExcept.cpp" />
+    <ClCompile Include="SimOptionDlg.cpp" />
+    <ClCompile Include="SimOutput.cpp" />
+    <ClCompile Include="SimThread.cpp" />
+    <ClCompile Include="Statusbar.cpp" />
+    <ClCompile Include="StdAfx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="TabWindow.cpp" />
+    <ClCompile Include="Toolbar.cpp" />
+    <ClCompile Include="VALIDADD.CPP" />
+    <ClCompile Include="WinMain.cpp" />
+    <ClCompile Include="WndCore.cpp" />
+    <ClCompile Include="ZipImpl.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="FSX_QAR.rc" />
+    <ResourceCompile Include="SimVarString.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Readme.txt" />
+    <Text Include="vars_dump.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Res\AlexShag_Logo.bmp" />
+    <Image Include="res\bitmap1.bmp" />
+    <Image Include="res\Collapsed.bmp" />
+    <Image Include="res\demo.bmp" />
+    <Image Include="Res\FSX_QAR.ico" />
+    <Image Include="res\ico00001.ico" />
+    <Image Include="res\GZIP.ico" />
+    <Image Include="res\icon2.ico" />
+    <Image Include="res\icon3.ico" />
+    <Image Include="res\ListLarge.bmp" />
+    <Image Include="Res\Mainfrm.bmp" />
+    <Image Include="res\Options.ico" />
+    <Image Include="res\QAR_tool1.bmp" />
+    <Image Include="res\Rebar.bmp" />
+    <Image Include="res\SMEAR.bmp" />
+    <Image Include="res\State1.ico" />
+    <Image Include="res\State2.ico" />
+    <Image Include="res\Tab1.ico" />
+    <Image Include="res\Tab2.ico" />
+    <Image Include="res\Tab3.ico" />
+    <Image Include="res\Unfold.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Readme.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Res\CursorHand.cur" />
+    <None Include="res\FSQAR_About.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="RES\gpl-3.0-standalone.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="FSQAR.exe.manifest" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A44D6EC0-91E0-4DBE-A41E-5FEABA5DA6F4}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>FSQAR</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Prepar3D_SDK.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Prepar3D_SDK.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalOptions>comctl32.lib version.lib htmlhelp.lib webcont.lib savejpeg.lib ziplib.lib simconnect.lib %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalOptions>htmlhelp.lib simconnect.lib savejpeg.lib ziplib.lib webcont.lib comctl32.lib %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,20 @@
+
+
+=================================================================================
+Original code by Jeff Glatt
+=================================================================================
+
+The source of the library was taken from Jeff Glatt's article on www.codeproject.com.
+
+---------------------------------------------------------------------------------
+
+EXPORTS:
+
+
+DisplayHTMLPage = @ILT+295(_DisplayHTMLPage)
+DisplayHTMLStr = @ILT+630(_DisplayHTMLStr)
+DoPageAction = @ILT+65(_DoPageAction)
+EmbedBrowserObject = @ILT+575(_EmbedBrowserObject)
+ResizeBrowser = @ILT+75(_ResizeBrowser)
+UnEmbedBrowserObject = @ILT+650(_UnEmbedBrowserObject)
+
