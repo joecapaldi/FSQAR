@@ -11,7 +11,7 @@
 // WARNING:
 // This is a very bad code! This is not C++ code but "C with objects" one. 
 // It breaks many basic principles of Objected-Oriented Programming.  
-// It is badly designed and ugly written. I don’t advise to use it directly 
+// It is badly designed and ugly written. I donâ€™t advise to use it directly 
 // without any modifications. This code may be used only as a starting point 
 // for developing more advanced application.
 //
@@ -588,11 +588,10 @@ void CSimConnect::UpdateFlightData(LPVOID pArrayAddress,  DWORD_PTR dwArrayCount
 	// This is required operation. Flight data array must be initialized.
 	// Get pointer to the flight data array from the pArrayAddress.
 	//
+	
 	PDOUBLE_VARIABLES_ARRAY pDA = static_cast<PDOUBLE_VARIABLES_ARRAY>(pArrayAddress);
 	
-
 	Lock lock(&g_csSimData);
-
 	static SimData* pVariables = SimData::GetSimData();
 	if (dwArrayCount <= SIM_VARS_COUNT)
 	{
