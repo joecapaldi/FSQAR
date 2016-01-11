@@ -24,11 +24,8 @@
 #include "fsqar.h"
 
 
-Window::Window()
+Window::Window() : m_hWnd(NULL), m_hFont(NULL), m_hMenu(NULL)
 {
-	m_hWnd = NULL;
-	m_hFont = NULL;
-	m_hMenu = NULL;
 }
 
 Window::~Window()
@@ -84,7 +81,6 @@ BOOL Window::Create(DWORD dwExStyle,
 {
 	// can't use for desktop or pop-up windows (use CreateEx instead)
 	ASSERT(pParentWnd != NULL);
-	__analysis_assume(pParentWnd);
 
 	
 	// lpWndObject is out window object instance that to be passed to 

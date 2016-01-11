@@ -71,8 +71,8 @@
 #endif
 #endif // TEST_WITHOUT_SIM
 
-//#include <sinconnect.h>			// use SDK header
-#include "simconnect_p3d_v3.h"		// use internel header
+#include <SimConnect.h>			// use SDK header
+//#include "simconnect_p3d_v3.h"		// use internel header
 
 // WARNING: The #include statements must be in the order shown here. 
 // If you change the order, the functions you use may not work properly.

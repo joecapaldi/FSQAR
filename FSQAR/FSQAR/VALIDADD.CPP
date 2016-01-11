@@ -31,7 +31,7 @@
 // return TRUE no matter how long the string is. The memory
 // used by the string can be read-only.
 
-BOOL AFXAPI AfxIsValidString(LPCWSTR lpsz, UINT_PTR nLength /* = -1 */)
+BOOL AfxIsValidString(LPCWSTR lpsz, UINT_PTR nLength /* = -1 */)
 {
 	if (lpsz == NULL)
 		return FALSE;
@@ -40,7 +40,7 @@ BOOL AFXAPI AfxIsValidString(LPCWSTR lpsz, UINT_PTR nLength /* = -1 */)
 
 // As above, but for ANSI strings.
 
-BOOL AFXAPI AfxIsValidString(LPCSTR lpsz, UINT_PTR nLength /* = -1 */)
+BOOL AfxIsValidString(LPCSTR lpsz, UINT_PTR nLength /* = -1 */)
 {
 	if (lpsz == NULL)
 		return FALSE;
@@ -52,7 +52,7 @@ BOOL AFXAPI AfxIsValidString(LPCSTR lpsz, UINT_PTR nLength /* = -1 */)
 // the memory must be writeable; if bReadWrite is FALSE, the memory
 // may be const.
 
-BOOL AFXAPI AfxIsValidAddress(const void* lp, UINT nBytes,
+BOOL AfxIsValidAddress(const void* lp, UINT nBytes,
 	BOOL bReadWrite /* = TRUE */)
 {
 	// simple version using Win-32 APIs for pointer validation.

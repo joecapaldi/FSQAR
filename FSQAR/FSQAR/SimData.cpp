@@ -26,7 +26,7 @@
 
 SimData* volatile SimData::m_data = NULL;
 LONG SimData::m_nRefCount = 0;
-SIZE_T SimData::m_nSize = SIM_VARS_COUNT;
+size_t SimData::m_nSize = SIM_VARS_COUNT;
 
 SimData::SimData() 
 {

@@ -594,15 +594,18 @@ void CSimConnect::UpdateFlightData(LPVOID pArrayAddress,  DWORD_PTR dwArrayCount
 	Lock lock(&g_csSimData);
 
 	static SimData* pVariables = SimData::GetSimData();
-	// CORRECT SIGN '<' NOT '<=' !!!
-	for (UINT_PTR nPosition = 0; nPosition < dwArrayCount; nPosition++)
+	if (dwArrayCount <= SIM_VARS_COUNT)
 	{
-		if (((*pDA)[nPosition] < MIN_DOUBLE) && ((*pDA)[nPosition] > -MIN_DOUBLE))
-			(*pDA)[nPosition] = 0;
-		
-		pVariables->SetValue(nPosition, (*pDA)[nPosition]);
+		// CORRECT SIGN '<' NOT '<=' !!!
+		for (UINT_PTR nPosition = 0; nPosition < dwArrayCount; nPosition++)
+		{
+			if (((*pDA)[nPosition] < MIN_DOUBLE) && ((*pDA)[nPosition] > -MIN_DOUBLE))
+				(*pDA)[nPosition] = 0;
+
+			pVariables->SetValue(nPosition, (*pDA)[nPosition]);
+		}
+		pVariables->SetArraySize(dwArrayCount);
 	}
-	pVariables->SetArraySize(dwArrayCount);
 
 	// We should lock the global variable g_GraphData
 	// to prevent data-racing

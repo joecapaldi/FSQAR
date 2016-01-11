@@ -48,6 +48,7 @@ BEGIN
                     "Button",BS_AUTOCHECKBOX | BS_MULTILINE | WS_TABSTOP,7,7,160,16
 END
 
+13                       RT_MANIFEST             "FSQAR.exe.manifest"
 
 /////////////////////////////////////////////////////////////////////////////
 //

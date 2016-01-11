@@ -354,7 +354,7 @@ typedef double(*PDOUBLE_VARIABLES_ARRAY)[SIM_VARS_COUNT];
 //				SimConnect Thread
 //========================================================================
 
-class CSimThread : public CObject
+class CSimThread
 {
 public:
 	CSimThread();
@@ -606,7 +606,7 @@ inline void CheckResult(LONG hResult, LPCTSTR pszFunctionName, LPCTSTR pszFileNa
 //				SimConnect API wrapper
 //=======================================================================
 
-class CSimConnect : public CObject
+class CSimConnect
 {
 public:
 	CSimConnect();
@@ -752,91 +752,91 @@ public:
 	
 	BOOL OpenConnection(LPCSTR pSessionName)
 	{
-		ASSERT_VALID(m_pSimConnect);
+		ASSERT(m_pSimConnect);
 		return m_pSimConnect->OpenConnection(pSessionName);
 	}
 
 	void Initialize()
 	{
-		ASSERT_VALID(m_pSimConnect);
+		ASSERT(m_pSimConnect);
 		m_pSimConnect->Initialize();
 	}
 
 	BOOL IsRunning()
 	{
-		ASSERT_VALID(m_pSimConnect);
+		ASSERT(m_pSimConnect);
 		return m_pSimConnect->IsRunning();
 	}
 
 	void CallDispatch(DispatchProc lpfnProc)
 	{
-		ASSERT_VALID(m_pSimConnect);
+		ASSERT(m_pSimConnect);
 		m_pSimConnect->CallDispatch(lpfnProc, m_pSimConnect);
 	}
 
 	void Quit()
 	{
-		ASSERT_VALID(m_pSimConnect);
+		ASSERT(m_pSimConnect);
 		m_pSimConnect->Quit();
 	}
 
 	void CloseConnection()
 	{
-		ASSERT_VALID(m_pSimConnect);
+		ASSERT(m_pSimConnect);
 		m_pSimConnect->CloseConnection();
 	}
 
 	void SetPause(BOOL fPause)
 	{
-		ASSERT_VALID(m_pSimConnect);
+		ASSERT(m_pSimConnect);
 		m_pSimConnect->SetPause(fPause);
 	}
 
 	void GetOptions(SIMCLIENT_OPTIONS* pSimOptions)
 	{
-		ASSERT_VALID(m_pSimConnect);
+		ASSERT(m_pSimConnect);
 		m_pSimConnect->GetOptions(pSimOptions);
 	}
 
 	void SetOptions(const SIMCLIENT_OPTIONS* pSimOptions)
 	{
-		ASSERT_VALID(m_pSimConnect);
+		ASSERT(m_pSimConnect);
 		m_pSimConnect->SetOptions(pSimOptions);
 	}
 
 	void SendDataToSimulator(DWORD dwDataDefinition, DWORD dwSize, void* pDataSet)
 	{
-		ASSERT_VALID(m_pSimConnect);
+		ASSERT(m_pSimConnect);
 		m_pSimConnect->SendDataToSimulator(dwDataDefinition, dwSize, pDataSet);
 	}
 
 	BOOL BeginSession(LPTHREAD_START_ROUTINE lpStartAddress, LPVOID lpParameter)
 	{
-		ASSERT_VALID(m_pSimThread);
+		ASSERT(m_pSimThread);
 		return m_pSimThread->CreateThread(lpStartAddress, lpParameter);
 	}
 
 	void EndSession()
 	{
-		ASSERT_VALID(m_pSimThread);
+		ASSERT(m_pSimThread);
 		m_pSimThread->ExitThread();
 	}
 
 	void SendTerminationSignal()
 	{
-		ASSERT_VALID(m_pSimThread);
+		ASSERT(m_pSimThread);
 		m_pSimThread->SendSignal();
 	}
 
 	BOOL IsTerminated()
 	{
-		ASSERT_VALID(m_pSimThread);
+		ASSERT(m_pSimThread);
 		return m_pSimThread->IsTerminated();
 	}
 
 	CSimConnect* GetSimConnect() const
 	{
-		ASSERT_VALID(m_pSimConnect);
+		ASSERT(m_pSimConnect);
 		return m_pSimConnect;
 	}
 
@@ -876,8 +876,8 @@ public:
 		lock.Release();
 	}
 
-	void SetArraySize(SIZE_T nSize) { m_nSize = nSize; }
-	static SIZE_T GetArraySize() { return m_nSize; }
+	void SetArraySize(size_t nSize) { m_nSize = nSize; }
+	size_t GetArraySize() const { return m_nSize; }
 
 protected:
 	static SimData* volatile m_data;
@@ -887,7 +887,7 @@ protected:
 	~SimData();
 
 private:
-	static SIZE_T m_nSize;
+	static size_t m_nSize;
 	static SIMVARIABLE m_Variables[SIM_VARS_COUNT];
 };
 

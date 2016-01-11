@@ -51,9 +51,7 @@ public:
 
 	// Binary
 	BOOL WriteBinary(LPCTSTR pszValueName, const BYTE* lpBuffer, SIZE_T nSize);
-	BOOL ReadBinary(__in_z LPCTSTR pszValueName,
-		__out_bcount_full(nSize) LPBYTE lpBuffer,
-		__in SIZE_T nSize);
+	BOOL ReadBinary(LPCTSTR pszValueName, LPBYTE lpBuffer, SIZE_T nSize);
 
 private:
 	HKEY m_hRoot;

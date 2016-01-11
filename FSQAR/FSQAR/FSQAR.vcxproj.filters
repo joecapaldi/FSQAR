@@ -48,9 +48,6 @@
     <ClInclude Include="SimClient.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SimConnect_p3d_v3.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SimVarIDS.h">
       <Filter>Header Files</Filter>
     </ClInclude>

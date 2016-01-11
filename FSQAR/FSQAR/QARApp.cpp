@@ -119,7 +119,7 @@ void QARApplication::Error(UINT uResID)
 
 	if (m_pFrameWnd)
 	{
-		ASSERT_VALID(m_pFrameWnd);
+		ASSERT(m_pFrameWnd);
 		hWnd = m_pFrameWnd->GetSafeHwnd();
 	}
 	else

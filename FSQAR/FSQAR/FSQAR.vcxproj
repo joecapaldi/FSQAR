@@ -22,7 +22,6 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="SCExport.h" />
     <ClInclude Include="SimClient.h" />
-    <ClInclude Include="SimConnect_p3d_v3.h" />
     <ClInclude Include="SimVarIDS.h" />
     <ClInclude Include="simvarres.h" />
     <ClInclude Include="StdAfx.h" />
@@ -155,6 +154,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(PREPAR3D_SDK)\Inc</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

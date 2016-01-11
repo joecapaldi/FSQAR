@@ -96,7 +96,7 @@ BOOL FrameWnd::OnCreate()
 	MoveWindow(m_hWnd, nWindowPosX, nWindowPosY, nWindowPosDX, nWindowPosDY, TRUE);
 
 	// Create status window
-	ASSERT_VALID(m_pStatus);
+	ASSERT(m_pStatus);
 	if(!m_pStatus->Create(this))
 	{
 		AfxGetApp()->Error(IDS_ERROR_CREATE_WINDOW);
@@ -111,7 +111,7 @@ BOOL FrameWnd::OnCreate()
 #ifndef _ALX_NO_TOOLBAR
 
 	// Create tools window
-	ASSERT_VALID(m_pToolbar);
+	ASSERT(m_pToolbar);
 	if (!m_pToolbar->Create(this))
 	{
 		AfxGetApp()->Error(IDS_ERROR_CREATE_WINDOW);
@@ -123,7 +123,7 @@ BOOL FrameWnd::OnCreate()
 	RECT rcClient;
 	GetClientRect(&rcClient);
 
-	ASSERT_VALID(m_pTabWnd);
+	ASSERT(m_pTabWnd);
 	if (!m_pTabWnd->Create(this, &rcClient))
 	{
 		AfxGetApp()->Error(IDS_ERROR_CREATE_WINDOW);
@@ -131,7 +131,7 @@ BOOL FrameWnd::OnCreate()
 	}
 
 	// Create graphic display
-	ASSERT_VALID(m_pGDisplay);
+	ASSERT(m_pGDisplay);
 	if (!m_pGDisplay->Create(m_pTabWnd, &rcClient))
 	{
 		AfxGetApp()->Error(IDS_ERROR_CREATE_WINDOW);
@@ -142,7 +142,7 @@ BOOL FrameWnd::OnCreate()
 	AfxGetApp()->SetActiveWnd(GDISPLAY);
 
 	// Create dynamical data display
-	ASSERT_VALID(m_pNDisplay);
+	ASSERT(m_pNDisplay);
 
 	TabCtrl_AdjustRect(m_pTabWnd->GetSafeHwnd(), FALSE, &rcClient);
 
@@ -157,7 +157,7 @@ BOOL FrameWnd::OnCreate()
 
 
 	// Create statical data display
-	ASSERT_VALID(m_pSDisplay);
+	ASSERT(m_pSDisplay);
 
 	TabCtrl_AdjustRect(m_pTabWnd->GetSafeHwnd(), FALSE, &rcClient);
 

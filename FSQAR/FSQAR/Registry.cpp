@@ -53,6 +53,8 @@ BOOL CRegistry::IsKeyExist(LPCTSTR pszKeyName)
 	return TRUE;
 }
 
+#define REGISTRY_ERROR TRACE4("%d %s %s (%d)\n", GetLastError(), __FUNCTION__, __FILE__, __LINE__);
+
 BOOL CRegistry::CreateKey(LPCTSTR pszKeyName)
 {
 
@@ -64,8 +66,7 @@ BOOL CRegistry::CreateKey(LPCTSTR pszKeyName)
 		REG_OPTION_VOLATILE, KEY_ALL_ACCESS, NULL, 
 		&m_hCurrentKey, &dwDisposition) != ERROR_SUCCESS)
 	{
-		TRACE1("CRegistry::CreateKey failed: %d\n", 
-			GetLastError());
+		REGISTRY_ERROR;
 		return FALSE;
 	}
 	return TRUE;
@@ -79,8 +80,7 @@ HKEY CRegistry::OpenKey(LPCTSTR pszKeyName)
 	if (::RegOpenKeyEx(m_hRoot, pszKeyName, 0, KEY_ALL_ACCESS, 
 		&m_hCurrentKey) != ERROR_SUCCESS)
 	{
-		TRACE1("CRegistry::OpenKey failed: %d\n", 
-			GetLastError());
+		REGISTRY_ERROR;
 		return NULL;
 	}
 	return m_hCurrentKey;
@@ -108,8 +108,7 @@ BOOL CRegistry::WriteInteger(LPCTSTR pszValueName, LPDWORD lpdwValue)
 	if (::RegSetValueEx(m_hCurrentKey, pszValueName, 0, REG_DWORD, 
 		(CONST BYTE *)lpdwValue, sizeof(DWORD)) != ERROR_SUCCESS)
 	{
-		TRACE1("CRegistry::WriteInteger failed:  %d\n", 
-			GetLastError());
+		REGISTRY_ERROR;
 		return FALSE;
 	}
 	return TRUE;
@@ -127,24 +126,21 @@ BOOL CRegistry::ReadInteger(LPCTSTR pszValueName, LPDWORD lpdwResult)
 	if (::RegQueryValueEx(m_hCurrentKey, pszValueName, 0, 
 		&dwType, NULL, &cbData) != ERROR_SUCCESS)
 	{
-		TRACE1("CRegistry::ReadInteger failed: %d\n", 
-			GetLastError());
+		REGISTRY_ERROR;
 		return FALSE;
 	}
 
 	lpbData = (LPBYTE)::GlobalAlloc(GMEM_FIXED | GMEM_ZEROINIT, cbData);
 	if (!lpbData)
 	{
-		TRACE1("CRegistry::ReadInteger  failed: %d\n", 
-			GetLastError());
+		REGISTRY_ERROR;
 		return FALSE;
 	}
 
 	if (::RegQueryValueEx(m_hCurrentKey, pszValueName, 0, 
 		&dwType, lpbData, &cbData) != ERROR_SUCCESS)
 	{
-		TRACE1("CRegistry::ReadInteger  failed: %d\n", 
-			GetLastError());
+		REGISTRY_ERROR;
 		return FALSE;
 	}
 
@@ -169,15 +165,10 @@ BOOL CRegistry::WriteString(LPCTSTR pszValueName, LPCTSTR pszString)
 		if (::RegSetValueEx(m_hCurrentKey, (LPTSTR)pszValueName, 0, REG_SZ,
 			(CONST BYTE *) pszString, (DWORD)cbData) != ERROR_SUCCESS)
 		{
-			TRACE1("CRegistry::WriteString failed: %d\n",
-				GetLastError());
+			REGISTRY_ERROR;
 			return FALSE;
 		}
 	}
-
-
-
-
 	return TRUE;
 }
 
@@ -190,8 +181,7 @@ BOOL CRegistry::WriteString(LPCTSTR pszValueName, LPCTSTR pszString, SIZE_T nLen
 	if (::RegSetValueEx(m_hCurrentKey, (LPTSTR)pszValueName, 0, REG_SZ, 
 		(CONST BYTE *) pszString, (DWORD)nLength) != ERROR_SUCCESS)
 	{
-		TRACE1("CRegistry::WriteString failed: %d\n", 
-			GetLastError());
+		REGISTRY_ERROR;
 		return FALSE;
 	}
 
@@ -213,21 +203,21 @@ BOOL CRegistry::ReadString(LPCTSTR pszValueName, LPTSTR pszResult)
 	if (::RegQueryValueEx(m_hCurrentKey, pszValueName, 0, 
 		&dwType, NULL, &cbData)!= ERROR_SUCCESS)
 	{
-		//
+		REGISTRY_ERROR;
 		return FALSE;
 	}
 
 	lpbData = (LPBYTE)GlobalAlloc(GMEM_FIXED | GMEM_ZEROINIT, cbData);
 	if (!lpbData)
 	{
-		//
+		REGISTRY_ERROR;
 		return FALSE;
 	}
 
 	if (::RegQueryValueEx(m_hCurrentKey, pszValueName, 0, 
 		&dwType, lpbData, &cbData)!= ERROR_SUCCESS)
 	{
-		//
+		REGISTRY_ERROR;
 		return FALSE;
 	}
 
@@ -249,8 +239,7 @@ BOOL CRegistry::WriteBinary(LPCTSTR pszValueName,  const BYTE* lpBuffer, SIZE_T 
 	if (::RegSetValueEx(m_hCurrentKey, (LPTSTR)pszValueName, 0, REG_BINARY, 
 		lpBuffer, (DWORD)nSize) != ERROR_SUCCESS)
 	{
-		TRACE1("CRegistry::WriteBinary failed: %d\n", 
-			GetLastError());
+		REGISTRY_ERROR;
 		return FALSE;
 	}
 
@@ -258,9 +247,7 @@ BOOL CRegistry::WriteBinary(LPCTSTR pszValueName,  const BYTE* lpBuffer, SIZE_T 
 	return TRUE;
 }
 
-BOOL CRegistry::ReadBinary(__in_z LPCTSTR pszValueName, 
-						   __out_bcount_full(nSize) LPBYTE lpBuffer, 
-						   __in SIZE_T nSize)
+BOOL CRegistry::ReadBinary(LPCTSTR pszValueName, LPBYTE lpBuffer, SIZE_T nSize)
 {
 
 	DWORD dwType;
@@ -274,21 +261,21 @@ BOOL CRegistry::ReadBinary(__in_z LPCTSTR pszValueName,
 	if (::RegQueryValueEx(m_hCurrentKey, pszValueName, 0, 
 		&dwType, NULL, &cbData)!= ERROR_SUCCESS)
 	{
-		//
+		REGISTRY_ERROR;
 		return FALSE;
 	}
 
 	lpbData = (LPBYTE)GlobalAlloc(GMEM_FIXED | GMEM_ZEROINIT, cbData);
 	if (!lpbData)
 	{
-		//
+		REGISTRY_ERROR;
 		return FALSE;
 	}
 
 	if (::RegQueryValueEx(m_hCurrentKey, pszValueName, 0, 
 		&dwType, lpbData, &cbData)!= ERROR_SUCCESS)
 	{
-		//
+		REGISTRY_ERROR;
 		return FALSE;
 	}
 

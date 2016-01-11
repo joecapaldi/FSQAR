@@ -276,7 +276,7 @@ inline void GraphData::SetSelectedChartValue(INT_PTR nLine, INT_PTR nValue)
 //					Base class for application windows
 //========================================================================
 
-class Window : public CObject
+class Window 
 {
 public:
 	Window();
@@ -427,6 +427,7 @@ class StatusBar : public Window
 {
 public:
 	StatusBar();
+
 	BOOL Create(const Window* pFrame);
 	void ShowStatus(int nPart, LPCTSTR pText)
 	{
@@ -450,8 +451,8 @@ class Toolbar : public Window
 { 
 public: 
 	Toolbar();
-	~Toolbar();
-	Toolbar(const Toolbar& Copy);
+	virtual ~Toolbar();
+
 	BOOL Create(const Window* pParent);
 protected: 
 	HIMAGELIST m_hImgList;
@@ -465,10 +466,11 @@ class TabWindow : public Window
 {
 public:
 	TabWindow();
-	~TabWindow();
-	BOOL Create(__in const Window* pFrameWnd, __in LPCRECT lpRect);
-	void AdjustRect(__in_opt LPCRECT lpRect);
-	BOOL InsertItem(__in_opt UINT nResID, __in_opt INT nImage);
+	virtual ~TabWindow();
+
+	BOOL Create(const Window* pFrameWnd, LPCRECT lpRect);
+	void AdjustRect(LPCRECT lpRect);
+	BOOL InsertItem(UINT nResID, INT nImage);
 protected:
 	HIMAGELIST m_hImageList;
 	void CreateImageList();
@@ -496,7 +498,7 @@ class NDisplay : public Window
 public:
 
 	NDisplay();
-	~NDisplay();
+	virtual ~NDisplay();
 
 	BOOL Create(const Window* pFrameWnd, LPCRECT lpRect);
 
@@ -671,7 +673,7 @@ class SDisplay : public Window
 { 
 public: 
 	SDisplay();
-	~SDisplay();
+	virtual ~SDisplay();
 
 	BOOL Create(const Window* pFrameWnd, LPCRECT lpRect);
 
@@ -741,7 +743,7 @@ class ControlPad : public Window
 { 
 public: 
 	ControlPad();
-	~ControlPad();
+	virtual ~ControlPad();
 
 	BOOL Create(const Window* pParent, LPCRECT lpRect);
 
@@ -785,7 +787,7 @@ class FrameWnd : public Window
 {
 public:
 	FrameWnd();
-	~FrameWnd();
+	virtual ~FrameWnd();
 
 
 	Window* GetChildWindow(enum CHILD_WINDOW childWindow) const;
@@ -907,49 +909,42 @@ public:
 	FrameWnd* GetMainWnd() const 
 	{ 
 		ASSERT(m_pFrameWnd);
-		__analysis_assume(m_pFrameWnd);
 		return m_pFrameWnd; 
 	}
 
 	GDisplay* GetGDisplay() const
 	{ 
 		ASSERT(m_pFrameWnd);
-		__analysis_assume(m_pFrameWnd);
 		return m_pFrameWnd->GetGDisplay();
 	}
 
 	NDisplay* GetNDisplay() const
 	{ 
 		ASSERT(m_pFrameWnd);
-		__analysis_assume(m_pFrameWnd);
 		return m_pFrameWnd->GetNDisplay();
 	}
 
 	SDisplay* GetSDisplay() const
 	{ 
 		ASSERT(m_pFrameWnd);
-		__analysis_assume(m_pFrameWnd);
 		return m_pFrameWnd->GetSDisplay();
 	}
 
 	ControlPad* GetCtrlPad() const
 	{ 
 		ASSERT(m_pFrameWnd);
-		__analysis_assume(m_pFrameWnd);
 		return m_pFrameWnd->GetCtrlPad();
 	}
 
 	TabWindow* GetTabWindow() const
 	{ 
 		ASSERT(m_pFrameWnd);
-		__analysis_assume(m_pFrameWnd);
 		return m_pFrameWnd->GetTabWindow();
 	}
 
 	StatusBar* GetStatus() const
 	{ 
 		ASSERT(m_pFrameWnd);
-		__analysis_assume(m_pFrameWnd);
 		return m_pFrameWnd->GetStatus();
 	}
 	// ===================================
@@ -959,7 +954,7 @@ public:
 	BOOL InitInstance(LPTSTR lpszCmdLine, int nCmdShow);
 	INT Run();
 
-	__checkReturn BOOL OpenFileDialog(__in LPCTSTR lpszFileName);
+	BOOL OpenFileDialog(LPCTSTR lpszFileName);
 
 	void SetActiveWnd(enum CHILD_WINDOW ActiveWnd);
 	HWND GetActiveWnd() { return m_hActiveWnd; };
@@ -985,10 +980,7 @@ private:
 
 	static const DWORD dwMainWndStyle = WS_VISIBLE | WS_OVERLAPPEDWINDOW | WS_CLIPCHILDREN | WS_CLIPSIBLINGS;
 	
-	BOOL RegisterWindowClass(__in WNDPROC lpfnWndProc, 
-		__in_opt LPCTSTR pszIconName, 
-		__in_opt LPCTSTR pszMenuName, 
-		__in_z LPCTSTR pszClassName);
+	BOOL RegisterWindowClass(WNDPROC lpfnWndProc, LPCTSTR pszIconName,  LPCTSTR pszMenuName,  LPCTSTR pszClassName);
 
 
 	static LPCTSTR m_pszAppName;
@@ -1004,17 +996,6 @@ private:
 	BOOL ZipOutputFolder();
 };
 
-//////////////////////////////////////////////////////////////////////////
-class CMyException
-{
-public:
-	CMyException(){};
-	~CMyException(){};
-	void what()
-	{
-		::MessageBox(0, L"", L"", 0);
-	}
-};
 
 //========================================================================
 //				Global variables

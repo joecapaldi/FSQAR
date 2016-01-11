@@ -22,80 +22,10 @@
 
 #include "stdafx.h"
 
-
-#ifdef _DEBUG
-#define new DEBUG_NEW
-#undef THIS_FILE
-static char THIS_FILE[] = __FILE__;
-#endif
-
-const struct CRuntimeClass CObject::classCObject =
-{ "CObject", sizeof(CObject), NULL };
-
-CObject::CObject()
-{
-}
-
-CObject::~CObject()
-{
-}
-
-CRuntimeClass* CObject::GetRuntimeClass() const
-{
-	return RUNTIME_CLASS(CObject);
-}
-
-#ifdef _DEBUG
-void AFXAPI AfxAssertValidObject(const CObject* pOb, LPCSTR lpszFileName, int nLine)
-{
-	if (pOb == NULL)
-	{
-		TRACE0("ASSERT_VALID fails with NULL pointer.\n");
-		if (AfxAssertFailedLine(lpszFileName, nLine))
-			AfxDebugBreak();
-		return;     // quick escape
-	}
-	if (!AfxIsValidAddress(pOb, sizeof(CObject)))
-	{
-		TRACE0("ASSERT_VALID fails with illegal pointer.\n");
-		if (AfxAssertFailedLine(lpszFileName, nLine))
-			AfxDebugBreak();
-		return;     // quick escape
-	}
-
-	// check to make sure the VTable pointer is valid
-	ASSERT(sizeof(CObject) == sizeof(void*));
-	if (!AfxIsValidAddress(*(void**)pOb, sizeof(void*), FALSE))
-	{
-		TRACE0("ASSERT_VALID fails with illegal vtable pointer.\n");
-		if (AfxAssertFailedLine(lpszFileName, nLine))
-			AfxDebugBreak();
-		return;     // quick escape
-	}
-
-	if (!AfxIsValidAddress(pOb, pOb->GetRuntimeClass()->m_nObjectSize, FALSE))
-	{
-		TRACE0("ASSERT_VALID fails with illegal pointer.\n");
-		if (AfxAssertFailedLine(lpszFileName, nLine))
-			AfxDebugBreak();
-		return;     // quick escape
-	}
-	pOb->AssertValid();
-}
-
-
-void CObject::AssertValid() const
-{
-	ASSERT(this != NULL);
-}
-#endif //_DEBUG
-
-
-
 //////////////////////////////////////////////////////////////////////////
 
 #ifdef _DEBUG
-BOOL AFXAPI AfxAssertFailedLine(LPCSTR lpszFileName, int nLine)
+BOOL  AfxAssertFailedLine(LPCSTR lpszFileName, int nLine)
 {
 
 #ifdef _ALX_USE_CRT_ASSERT
